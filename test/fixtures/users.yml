@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password_digest: MyString
+  weekly_goal: 1
+  longest_run: 1
+
+two:
+  username: MyString
+  password_digest: MyString
+  weekly_goal: 1
+  longest_run: 1
