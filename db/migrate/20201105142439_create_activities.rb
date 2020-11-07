@@ -6,7 +6,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
       t.integer :point_value
       t.string :category
       t.boolean :audible
-      t.string :type
+      t.string :energy_type
 
       t.timestamps
     end
