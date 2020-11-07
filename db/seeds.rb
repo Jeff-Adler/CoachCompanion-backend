@@ -49,27 +49,15 @@ for i in 0..25 do
 end
 
 User.all.each do |user|
-    user.activities.create(
+    for i in 0..10 do
+        user.activities.create(
         title: ACTIVITY.sample,
         point_value: rand(5..30),
         category: ACTIVITY_CATEGORIES.sample,
         audible: (rand(0..1) == 0 ? true : false),
         energy_type: ACTIVITY_TYPES.sample,
     )
-    user.activities.create(
-        title: ACTIVITY.sample,
-        point_value: rand(5..30),
-        category: ACTIVITY_CATEGORIES.sample,
-        audible: (rand(0..1) == 0 ? true : false),
-        energy_type: ACTIVITY_TYPES.sample,
-    )
-    user.activities.create(
-        title: ACTIVITY.sample,
-        point_value: rand(5..30),
-        category: ACTIVITY_CATEGORIES.sample,
-        audible: (rand(0..1) == 0 ? true : false),
-        energy_type: ACTIVITY_TYPES.sample,
-    )
+    end
 end
 
 # create_table "activities", force: :cascade do |t|
