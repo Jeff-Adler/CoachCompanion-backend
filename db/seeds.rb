@@ -50,7 +50,7 @@ end
 
 User.all.each do |user|
     for i in 0..10 do
-        user.activities.create(
+        user.activities.create!(
         title: ACTIVITY.sample,
         point_value: rand(5..30),
         category: ACTIVITY_CATEGORIES.sample,
@@ -60,17 +60,14 @@ User.all.each do |user|
     end
 end
 
-# create_table "activities", force: :cascade do |t|
-#     t.bigint "user_id", null: false
-#     t.string "title"
-#     t.integer "point_value"
-#     t.string "category"
-#     t.boolean "audible"
-#     t.string "type"
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.index ["user_id"], name: "index_activities_on_user_id"
-#   end
+User.all.each do |user|
+    for i in 0..20 do
+        user.logs.create!(
+            activity: user.activities.sample,
+            timestamp: Faker::Time.between(from: DateTime.now - 10, to: DateTime.now)
+        )
+    end
+end
 
 #   create_table "logs", force: :cascade do |t|
 #     t.bigint "user_id", null: false
