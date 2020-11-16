@@ -17,6 +17,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def retrieve_user_activities
+    render json: @user.activities
   end
  
   private
