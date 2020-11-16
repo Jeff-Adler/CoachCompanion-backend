@@ -40,7 +40,7 @@ namespace :app do
         ]
 
         for i in 0..30 do
-            user.last.activities.create!(
+            User.last.activities.create!(
                 title: ACTIVITY.sample,
                 point_value: rand(5..30),
                 category: ACTIVITY_CATEGORIES.sample,
