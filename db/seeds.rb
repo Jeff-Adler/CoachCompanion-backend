@@ -68,13 +68,3 @@ User.all.each do |user|
         )
     end
 end
-
-#   create_table "logs", force: :cascade do |t|
-#     t.bigint "user_id", null: false
-#     t.bigint "activity_id", null: false
-#     t.string "timestamp"
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.index ["activity_id"], name: "index_logs_on_activity_id"
-#     t.index ["user_id"], name: "index_logs_on_user_id"
-#   end
