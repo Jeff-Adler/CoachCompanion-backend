@@ -22,6 +22,8 @@ class Api::V1::UsersController < ApplicationController
 
 
   def log_activity
+    byebug
+    log_activity_params
   end
  
   private
@@ -31,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def log_activity_params
-    params.require(:user).permit(:activity,:timestamp)
+    params.require(:activity).permit(:time)
   end
 
   def find_user
