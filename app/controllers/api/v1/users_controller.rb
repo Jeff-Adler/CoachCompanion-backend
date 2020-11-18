@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  before_action :find_user, only: [:retrieve_user_activities]
+  before_action :find_user, only: [:retrieve_user_activities, :log_activity]
  
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -18,6 +18,10 @@ class Api::V1::UsersController < ApplicationController
 
   def retrieve_user_activities
     render json: @user.activities
+  end
+
+
+  def log_activity
   end
  
   private

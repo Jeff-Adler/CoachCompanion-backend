@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       get 'users/:id/activities', to: 'users#retrieve_user_activities'
+      post 'users/:id/log_activity', to: 'users#log_activity'
     end
   end
 end
