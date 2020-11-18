@@ -30,6 +30,10 @@ class Api::V1::UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :bio, :avatar)
   end
 
+  def log_activity_params
+    params.require(:user).permit(:activity,:timestamp)
+  end
+
   def find_user
     @user = User.find(params[:id])
   end
