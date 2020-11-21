@@ -22,7 +22,6 @@ class Api::V1::UsersController < ApplicationController
 
 
   def log_activity
-    byebug
     log_activity_params
   end
  
