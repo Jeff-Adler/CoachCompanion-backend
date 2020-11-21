@@ -33,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def log_activity_params
-    params.require(:activity).permit(:time)
+    params.require(:activity).permit(:activity_id,:timestamp)
   end
 
   def find_user
