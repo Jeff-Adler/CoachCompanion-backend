@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       get 'users/:id/activities', to: 'users#retrieve_user_activities'
       post 'users/:id/log_activity', to: 'users#log_activity'
+      get 'users/:id/weekly_activities', to: 'users#retrieve_weekly_activities'
     end
   end
 end

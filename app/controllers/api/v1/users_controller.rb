@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  before_action :find_user, only: [:retrieve_user_activities, :log_activity]
+  before_action :find_user, only: [:retrieve_user_activities, :log_activity, :retrieve_weekly_activities]
  
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -30,6 +30,9 @@ class Api::V1::UsersController < ApplicationController
     end
   end
  
+  def retrieve_weekly_activities
+  end
+
   private
  
   def user_params
