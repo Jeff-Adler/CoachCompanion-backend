@@ -22,7 +22,12 @@ class Api::V1::UsersController < ApplicationController
 
 
   def log_activity
-    log_activity_params
+    log = @user.logs.create!(activity_id: log_activity_params[:activity_id], timestamp: log_activity_params[:timestamp])
+    if log.valid?
+      render json: { log: log }, status: :created
+    else
+      render json: { error: 'failed to create log' }, status: :not_acceptable
+    end
   end
  
   private
