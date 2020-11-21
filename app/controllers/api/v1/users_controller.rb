@@ -31,6 +31,8 @@ class Api::V1::UsersController < ApplicationController
   end
  
   def retrieve_weekly_activities
+    #need to filter logged activities by date
+    render json: @user.logged_activities
   end
 
   private
