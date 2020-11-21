@@ -8,6 +8,10 @@ class User < ApplicationRecord
     def calculate_weekly_tally
     end
 
-    def get_weekly_logs
+    def get_weekly_logs(user) 
+        user_logs = user.logs
+    end
+
+    def get_weekly_date_range
     end
 end
