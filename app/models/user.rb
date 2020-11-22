@@ -9,9 +9,12 @@ class User < ApplicationRecord
     end
 
     def get_weekly_logs(user) 
+        #filter user_logs where timestamp is between weekly_date_range
         user_logs = user.logs
     end
 
     def get_weekly_date_range
+        start_date = Date.today.beginning_of_week
+        end_date = Date.today.end_of_week
     end
 end
