@@ -31,7 +31,7 @@ class Api::V1::UsersController < ApplicationController
   end
  
   def retrieve_weekly_activities
-    render json: @user.get_weekly_logss
+    render json: @user.get_weekly_logs
   end
 
   private
