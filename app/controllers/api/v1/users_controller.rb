@@ -34,6 +34,10 @@ class Api::V1::UsersController < ApplicationController
     render json: @user.get_weekly_logs
   end
 
+  def retrieve_weekly_tally
+    render json: @user.get_weekly_tally
+  end
+
   private
  
   def user_params
