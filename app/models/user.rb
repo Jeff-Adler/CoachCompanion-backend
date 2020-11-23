@@ -8,17 +8,12 @@ class User < ApplicationRecord
     def calculate_weekly_tally
     end
 
-    def get_weekly_logs(user) 
+    def get_weekly_logs
         #filter user_logs where timestamp is between weekly_date_range
-        user_logs = user.logs
-        user_logs = user_logs.map do |log|
-            Date.parse(log.timestamp.split("T")[0])
+        user_logs = self.logs
+        user_logs = user_logs.filter do |log|
+            date = Date.parse(log.timestamp.split("T")[0])
+            date > Date.today.beginning_of_week || date < Date.today.end_of_week
         end
-
-    end
-
-    def get_weekly_date_range
-        start_date = Date.today.beginning_of_week
-        end_date = Date.today.end_of_week
     end
 end
