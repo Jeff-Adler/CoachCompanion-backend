@@ -55,7 +55,7 @@ namespace :app do
         for i in 0..20 do
             User.last.logs.create!(
                 activity: User.last.activities.sample,
-                timestamp: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now)
+                timestamp: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now - 20)
             )
         end
     end
