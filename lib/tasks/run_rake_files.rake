@@ -1,6 +1,6 @@
 namespace :app do
     desc 'All'
-    task all: [:activity_creator]
+    task all: [:activity_creator,:log_creator]
 
     desc "Create activities for User.last"
     task :activity_creator => :environment do 
@@ -46,6 +46,16 @@ namespace :app do
                 category: ACTIVITY_CATEGORIES.sample,
                 audible: (rand(0..1) == 0 ? true : false),
                 energy_type: ACTIVITY_TYPES.sample,
+            )
+        end
+    end
+
+    desc "Create logs for User.last"
+    task :log_creator => :environment do 
+        for i in 0..20 do
+            User.last.logs.create!(
+                activity: User.last.activities.sample,
+                timestamp: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now)
             )
         end
     end
