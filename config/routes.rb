@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'users/:id/activities', to: 'users#retrieve_user_activities'
       post 'users/:id/log_activity', to: 'users#log_activity'
       get 'users/:id/weekly_activities', to: 'users#retrieve_weekly_activities'
+      get 'users/:id/weekly_tally', to: 'users#retrieve_weekly_tally'
     end
   end
 end
