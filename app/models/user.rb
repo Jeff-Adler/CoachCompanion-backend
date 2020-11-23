@@ -11,6 +11,10 @@ class User < ApplicationRecord
     def get_weekly_logs(user) 
         #filter user_logs where timestamp is between weekly_date_range
         user_logs = user.logs
+        user_logs = user_logs.map do |log|
+            Date.parse(log.timestamp.split("T")[0])
+        end
+
     end
 
     def get_weekly_date_range
