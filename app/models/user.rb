@@ -13,7 +13,7 @@ class User < ApplicationRecord
         user_logs = self.logs
         user_logs = user_logs.filter do |log|
             date = Date.parse(log.timestamp.split("T")[0])
-            date > Date.today.beginning_of_week || date < Date.today.end_of_week
+            date >= Date.today.beginning_of_week && date <= Date.today.end_of_week
         end
     end
 end

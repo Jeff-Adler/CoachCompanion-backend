@@ -52,10 +52,10 @@ namespace :app do
 
     desc "Create logs for User.last"
     task :log_creator => :environment do 
-        for i in 0..20 do
+        for i in 0..30 do
             User.last.logs.create!(
                 activity: User.last.activities.sample,
-                timestamp: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now - 20)
+                timestamp: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now)
             )
         end
     end
