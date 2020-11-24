@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  before_action :find_user, only: [:retrieve_user_activities, :log_activity, :retrieve_weekly_activities, :retrieve_weekly_tally]
+  before_action :find_user, only: [:retrieve_user_activities, :log_activity, :retrieve_weekly_activities, :retrieve_weekly_tally, :submit_activity]
  
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -38,6 +38,15 @@ class Api::V1::UsersController < ApplicationController
     render json: @user.get_weekly_tally
   end
 
+  def submit_activity
+    activity = @user.activities.create!(submit_activity_params)
+    if activity.valid?
+      render json: { activity: activity }, status: :created
+    else
+      render json: { error: 'failed to create activity' }, status: :not_acceptable
+    end
+  end
+
   private
  
   def user_params
@@ -46,6 +55,10 @@ class Api::V1::UsersController < ApplicationController
 
   def log_activity_params
     params.require(:activity).permit(:activity_id,:timestamp)
+  end
+
+  def submit_activity_params
+    params.require(:activity).permit(:title,:point_value,:category,:audible,:energy_type)
   end
 
   def find_user
