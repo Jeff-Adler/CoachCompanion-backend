@@ -22,4 +22,7 @@ class User < ApplicationRecord
             date >= Date.today.beginning_of_week && date <= Date.today.end_of_week
         end
     end
+
+    def get_weekly_tally_by_category
+    end
 end
