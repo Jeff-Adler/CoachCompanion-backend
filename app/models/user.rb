@@ -26,7 +26,16 @@ class User < ApplicationRecord
     def filter_logs_by_category(category)
         weekly_logs = self.get_weekly_logs
 
-        filtered_weekly_logs = weekly_logs.filter do |log|
+        filtered_weekly_logs = weekly_logs.select do |log|
+            log.activity.category == category
         end
+    end
+
+    def tally_logs(logs)
+        logs_by_points = logs.map do |log|
+            log.activity.point_value
+        end
+
+        logs_by_points.reduce(:+)
     end
 end
