@@ -23,9 +23,10 @@ class User < ApplicationRecord
         end
     end
 
-    def get_weekly_tally_by_category(weekly_logs)
-        tally_by_category = {}
+    def filter_logs_by_category(category)
+        weekly_logs = self.get_weekly_logs
 
-        #sorts logs by category and returns total in an object
+        filtered_weekly_logs = weekly_logs.filter do |log|
+        end
     end
 end
