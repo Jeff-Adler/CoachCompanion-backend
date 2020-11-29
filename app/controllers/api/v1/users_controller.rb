@@ -31,7 +31,7 @@ class Api::V1::UsersController < ApplicationController
   end
  
   def retrieve_weekly_activities
-    render json: @user.get_weekly_logs
+    render json: Log.filter_logs_by_current_week(@user.logs)
   end
 
   def retrieve_weekly_tally
