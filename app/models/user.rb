@@ -6,7 +6,7 @@ class User < ApplicationRecord
     validates :username, uniqueness: { case_sensitive: false }
 
     def get_weekly_tally
-        weekly_logs = self.get_weekly_logs
+        weekly_logs = self.logs.filter_logs_by_week
 
         weekly_points = weekly_logs.map do |log|
             log.activity.point_value
@@ -15,18 +15,15 @@ class User < ApplicationRecord
         weekly_points.reduce(:+)
     end
 
-    def get_weekly_logs
-        user_logs = self.logs
-        user_logs = user_logs.filter do |log|
+    def filter_logs_by_current_week(logs)
+        logs.select do |log|
             date = Date.parse(log.timestamp.split("T")[0])
             date >= Date.today.beginning_of_week && date <= Date.today.end_of_week
         end
     end
 
-    def filter_logs_by_category(category)
-        weekly_logs = self.get_weekly_logs
-
-        filtered_weekly_logs = weekly_logs.select do |log|
+    def filter_logs_by_activity_category(logs,category)
+        logs.select do |log|
             log.activity.category == category
         end
     end
