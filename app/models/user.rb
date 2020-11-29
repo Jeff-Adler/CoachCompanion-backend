@@ -15,24 +15,4 @@ class User < ApplicationRecord
         weekly_points.reduce(:+)
     end
 
-    def filter_logs_by_current_week(logs)
-        logs.select do |log|
-            date = Date.parse(log.timestamp.split("T")[0])
-            date >= Date.today.beginning_of_week && date <= Date.today.end_of_week
-        end
-    end
-
-    def filter_logs_by_activity_category(logs,category)
-        logs.select do |log|
-            log.activity.category == category
-        end
-    end
-
-    def tally_logs(logs)
-        logs_by_points = logs.map do |log|
-            log.activity.point_value
-        end
-
-        logs_by_points.reduce(:+)
-    end
 end
